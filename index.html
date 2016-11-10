@@ -3,25 +3,34 @@
   <head>
     <title>Lunch Checker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/angular.min.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      .txt-green{
+        color: green;
+      }
+      .txt-red{
+        color:red;
+      }
     </style>
   </head>
-<body>
-   <div class="container">
+<body ng-app="LunchCheck">
+   <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
 
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
+         <div class="form-group {{textboxClass}}">
+             <input id="lunch-menu" type="text" ng-model="foodList"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control">
          </div>
          <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
+             <button class="btn btn-default" ng-click="checkFoodAmount();">Check If Too Much</button>
          </div>
-         <div class="form-group message">
+         <div class="form-group message {{txtColor}}">
            <!-- Your message can go here. -->
+           {{showingMessage}}
          </div>
    </div>
 
